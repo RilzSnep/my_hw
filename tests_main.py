@@ -9,7 +9,7 @@ def product_1():
         name="Samsung Galaxy S22 Snapdragon 8 gen 1",
         price=35000.0,
         description="amaled display, 8/256Gb , 50,24,12MP ,Color-Black",
-        quantity=3
+        quantity=3,
     )
 
 
@@ -26,7 +26,7 @@ def product_2():
         name="Honor 200 lite",
         price=30000.0,
         description="amaled display, 8/256Gb , 200MP ,Color-white",
-        quantity=6
+        quantity=6,
     )
 
 
@@ -43,7 +43,7 @@ def product_3():
         name="Iphone 14 pro max",
         price=35000.0,
         description="amaled display, 8/512Gb , 50Mp ,Color-Purple",
-        quantity=5
+        quantity=5,
     )
 
 
@@ -59,17 +59,15 @@ def category_1():
     return Category(
         name="Телефоны",
         description="Самые топовые делефоны до 35000",
-        products=("Iphone 14 pro max", "Iphone 14 pro max", "Honor 200 lite")
+        products=("Iphone 14 pro max", "Iphone 14 pro max", "Honor 200 lite"),
     )
 
 
 def test_category_1(category_1):
     assert category_1.name == "Телефоны"
     assert category_1.description == "Самые топовые делефоны до 35000"
-    assert category_1.products == ("Iphone 14 pro max", "Iphone 14 pro max", "Honor 200 lite")
-
-
-@pytest.mark.parametrize("name,quantity, price, total", [
-    ("Iphon 15" ,2 ,35000, 70000),
-    ("Honor 20 lite",3 ,8000, 24000)])
-
+    assert category_1.products == (
+        "Iphone 14 pro max",
+        "Iphone 14 pro max",
+        "Honor 200 lite",
+    )
