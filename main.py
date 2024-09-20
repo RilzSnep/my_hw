@@ -20,8 +20,8 @@ class Category:
 
     def __init__(self, name, description, products):
         self.description = description
-        self.name = name
         self.products = products
+        self.name = name
         self.category_count += 1
         self.product_count += len(description)
 

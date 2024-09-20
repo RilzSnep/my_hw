@@ -31,8 +31,8 @@ def product_2():
 
 
 def test_product_2(product_2):
-    assert product_2.name == "Honor 200 lite"
     assert product_2.price == 30000.0
+    assert product_2.name == "Honor 200 lite"
     assert product_2.description == "amaled display, 8/256Gb , 200MP ,Color-white"
     assert product_2.quantity == 6
 
