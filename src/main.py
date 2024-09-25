@@ -16,7 +16,7 @@ class Product:
 
     def price_(self, value: float):
         if value <= 0:
-            return 'Цена не должна быть нулевая или отрицательная'
+            return 'Цена не должна быть нулевая или отрицательная.'
         else:
             self.__price = value
 
