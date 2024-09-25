@@ -59,14 +59,14 @@ def test_product_3(product_3):
 def test_category() -> Any:
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
     category2 = Category(
-        "Телевизоры ",
+        "Телевизоры",
         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
     )
     return category2
 
 
 def test_category_init(test_category: Any) -> Any:
-    assert test_category.name == "Телевизоры "
+    assert test_category.name == "Телевизоры"
     assert (
         test_category.description
         == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
