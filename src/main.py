@@ -1,18 +1,14 @@
 class Product:
     name: str
     price: int
-    description: str
     quantity: int
+    description: str
 
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.__price = price
         self.description = description
         self.quantity = quantity
-
-    @property
-    def price(self):
-        return self.__price
 
     def price_(self, value: float):
         if value <= 0:
@@ -24,28 +20,32 @@ class Product:
     def new_product(cls, prod_inf: dict):
         return cls(prod_inf['name'], prod_inf['description'], prod_inf['price'], prod_inf['quantity'])
 
+    @property
+    def price(self):
+        return self.__price
+
 
 class Category:
     category_count = 0
     product_count = 0
-    name: str
     description: str
+    name: str
 
     def __init__(self, name, description, products=None):
         self.description = description
-        self.name = name
         self.__products = products if products else []
+        self.name = name
         self.category_count += 1
         self.product_count = len(self.__products)
         Category.category_count += 1
-
-    def add_product(self, product):
-        self.__products.append(product)
 
     @property
     def get_product(self):
         for product in self.__products:
             return f"{product.name}, {product.price} руб. Остаток: {product.quantity}."
+
+    def add_product(self, product):
+        self.__products.append(product)
 
 # if __name__ == "__main__":
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
