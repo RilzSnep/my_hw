@@ -1,6 +1,6 @@
 import pytest
-
-from main import Category, Product
+from typing import Any
+from src.main import Category, Product
 
 
 @pytest.fixture()
@@ -22,12 +22,13 @@ def test_product_1(product_1):
 
 @pytest.fixture()
 def product_2():
-    return Product(
+    category52 = Product(
         name="Honor 200 lite",
         price=30000.0,
         description="amaled display, 8/256Gb , 200MP ,Color-white",
         quantity=6,
     )
+    return category52
 
 
 def test_product_2(product_2):
@@ -55,19 +56,18 @@ def test_product_3(product_3):
 
 
 @pytest.fixture()
-def category_1():
-    return Category(
-        name="Телефоны",
-        description="Самые топовые делефоны до 35000",
-        products=("Iphone 14 pro max", "Iphone 14 pro max", "Honor 200 lite"),
+def test_category() -> Any:
+    product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    category2 = Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
     )
+    return category2
 
 
-def test_category_1(category_1):
-    assert category_1.name == "Телефоны"
-    assert category_1.description == "Самые топовые делефоны до 35000"
-    assert category_1.products == (
-        "Iphone 14 pro max",
-        "Iphone 14 pro max",
-        "Honor 200 lite",
+def test_category_init(test_category: Any) -> Any:
+    assert test_category.name == "Телевизоры"
+    assert (
+        test_category.description
+        == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
     )
