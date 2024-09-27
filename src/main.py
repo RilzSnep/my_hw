@@ -10,6 +10,12 @@ class Product:
         self.description = description
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
+
     def price_(self, value: float):
         if value <= 0:
             return 'Цена не должна быть нулевая или отрицательная'
@@ -38,6 +44,9 @@ class Category:
         self.category_count += 1
         self.product_count = len(self.__products)
         Category.category_count += 1
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.product_count} шт."
 
     @property
     def get_product(self):

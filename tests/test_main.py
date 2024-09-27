@@ -38,6 +38,10 @@ def test_product_2(product_2):
     assert product_2.quantity == 6
 
 
+def test_product_add(product_2, product_3):
+    assert product_2 + product_3 == 355000
+
+
 @pytest.fixture()
 def product_3():
     p3 = Product(
@@ -56,6 +60,10 @@ def test_product_3(product_3):
     assert product_3.quantity == 5
 
 
+def test_product_str(product_3):
+    assert str(product_3) == "Iphone 14 pro max, 35000.0 руб. Остаток: 5 шт."
+
+
 @pytest.fixture()
 def test_category() -> Any:
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
@@ -66,9 +74,13 @@ def test_category() -> Any:
     return category1
 
 
+def test_category_str(test_category):
+    assert str(test_category) == f"Телевизоры, количество продуктов: {test_category.product_count} шт."
+
+
 def test_category_init(test_category: Any) -> Any:
     assert (
-        test_category.description
-        == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
+            test_category.description
+            == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
     )
     assert test_category.name == "Телевизоры"
