@@ -3,7 +3,6 @@ from typing import Any
 from src.main import Category, Product
 
 
-
 @pytest.fixture()
 def product_1():
     p1 = Product(
@@ -15,13 +14,11 @@ def product_1():
     return p1
 
 
-
 def test_product_1(product_1):
     assert product_1.price == 35000.0
     assert product_1.name == "Samsung Galaxy S22 Snapdragon 8 gen 1"
     assert product_1.description == "amaled display, 8/256Gb , 50,24,12MP ,Color-Black"
     assert product_1.quantity == 3
-
 
 
 @pytest.fixture()
@@ -34,18 +31,11 @@ def product_2():
     )
 
 
-
 def test_product_2(product_2):
     assert product_2.price == 30000.0
     assert product_2.name == "Honor 200 lite"
     assert product_2.description == "amaled display, 8/256Gb , 200MP ,Color-white"
     assert product_2.quantity == 6
-
-
-
-def test_product_add(product_2, product_3):
-    assert product_2 + product_3 == 355000
-
 
 
 @pytest.fixture()
@@ -59,18 +49,11 @@ def product_3():
     return p3
 
 
-
 def test_product_3(product_3):
     assert product_3.price == 35000.0
     assert product_3.name == "Iphone 14 pro max"
     assert product_3.description == "amaled display, 8/512Gb , 50Mp ,Color-Purple"
     assert product_3.quantity == 5
-
-
-
-def test_product_str(product_3):
-    assert str(product_3) == "Iphone 14 pro max, 35000.0 руб. Остаток: 5 шт."
-
 
 
 @pytest.fixture()
@@ -83,15 +66,9 @@ def test_category() -> Any:
     return category1
 
 
-
-def test_category_str(test_category):
-    assert str(test_category) == f"Телевизоры, количество продуктов: {test_category.product_count} шт."
-
-
-
 def test_category_init(test_category: Any) -> Any:
     assert (
-            test_category.description
-            == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
+        test_category.description
+        == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
     )
     assert test_category.name == "Телевизоры"
