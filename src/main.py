@@ -14,7 +14,10 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return self.__price * self.quantity + other.__price * other.quantity
+        if type(self) is type(other):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError('Объекты должны быть экземплярами одного класса')
 
     def price_(self, value: float):
         if value <= 0:
@@ -32,6 +35,23 @@ class Product:
 
     def return_quantity(self):
         return self.quantity
+
+
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
 
 
 class Category:
@@ -61,7 +81,7 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            raise ValueError("Что-то не ворк")
+            raise TypeError('Такой продукт нам не подходит')
 
 
 if __name__ == '__main__':

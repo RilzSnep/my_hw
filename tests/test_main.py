@@ -1,6 +1,6 @@
 import pytest
 from typing import Any
-from src.main import Category, Product
+from src.main import Category, Product, Smartphone, LawnGrass
 
 
 @pytest.fixture()
@@ -81,7 +81,33 @@ def test_category_str():
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product1, product2, product3])
-    assert str(category1.products) == "['Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.', 'Iphone 15, 210000.0 руб. Остаток: 8 шт.', 'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.']"
+    assert str(
+        category1.products) == "['Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.', 'Iphone 15, 210000.0 руб. Остаток: 8 шт.', 'Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.']"
     assert product1 + product2 == 2580000.0
     assert product1 + product3 == 1334000.0
     assert product2 + product3 == 2114000.0
+
+
+smartphone = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
+                        "S23 Ultra", 256, "Серый")
+
+
+def test_init_smarthone() -> Any:
+    assert smartphone.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone.description == "256GB, Серый цвет, 200MP камера"
+    assert smartphone.efficiency == 95.5
+    assert smartphone.model == "S23 Ultra"
+
+
+lawn_grass = LawnGrass("трава", "трава для газона", 500.0, 20, "Россия",
+                       "1 месяц", "Зеленый")
+
+
+def test_init_lawngrass() -> Any:
+    assert lawn_grass.name == "трава"
+    assert lawn_grass.description == "трава для газона"
+    assert lawn_grass.price == 500.0
+    assert lawn_grass.quantity == 20
+    assert lawn_grass.country == "Россия"
+    assert lawn_grass.germination_period == "1 месяц"
+    assert lawn_grass.color == "Зеленый"
