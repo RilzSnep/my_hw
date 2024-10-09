@@ -13,10 +13,6 @@ class BaseProduct(ABC):
     def __str__(self):
         pass
 
-    @abstractmethod
-    def price(self, other):
-        pass
-
 
 class MixinProduct:
     def __init__(self, *args, **kwargs):
@@ -25,11 +21,6 @@ class MixinProduct:
 
 
 class Product(BaseProduct, MixinProduct):
-    name: str
-    price: int
-    quantity: int
-    description: str
-
     def __init__(self, name, description, price, quantity):
         super().__init__(name, description, price, quantity)
         self.name = name
@@ -46,7 +37,7 @@ class Product(BaseProduct, MixinProduct):
         else:
             raise TypeError("Объекты должны быть экземплярами одного класса")
 
-    def price(self, value: float):
+    def price_(self, value: float):
         if value <= 0:
             return "Цена не должна быть нулевая или отрицательная"
         else:
@@ -71,7 +62,7 @@ class Product(BaseProduct, MixinProduct):
 
 class Smartphone(Product):
     def __init__(
-            self, name, description, price, quantity, efficiency, model, memory, color
+        self, name, description, price, quantity, efficiency, model, memory, color
     ):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
@@ -82,7 +73,7 @@ class Smartphone(Product):
 
 class LawnGrass(Product):
     def __init__(
-            self, name, description, price, quantity, country, germination_period, color
+        self, name, description, price, quantity, country, germination_period, color
     ):
         super().__init__(name, description, price, quantity)
         self.country = country
