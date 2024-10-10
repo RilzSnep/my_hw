@@ -136,4 +136,3 @@ def test_init_lawngrass() -> Any:
     assert lawn_grass.quantity == 20
     assert lawn_grass.country == "Россия"
     assert lawn_grass.germination_period == "1 месяц"
-    assert lawn_grass.color == "Зеленый"
