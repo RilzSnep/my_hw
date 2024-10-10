@@ -33,6 +33,15 @@ def product_2():
     )
 
 
+def test_product_zero_quantity():
+    try:
+        product = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)
+        print("Тест не пройден: исключение не выброшено")
+    except ValueError as e:
+        assert str(e) == "Товар с нулевым количеством не может быть добавлен", "Неверное сообщение об ошибке"
+        print("Тест пройден: выброшено исключение ValueError")
+
+
 def test_product_2(product_2):
     assert product_2.price == 30000.0
     assert product_2.name == "Honor 200 lite"
@@ -69,9 +78,9 @@ def test_category() -> Any:
 
 def test_category_init(test_category: Any) -> Any:
     assert (
-        test_category.description
-        == "Современный телевизор, который позволяет наслаждаться просмотром, "
-        "станет вашим другом и помощником"
+            test_category.description
+            == "Современный телевизор, который позволяет наслаждаться просмотром, "
+               "станет вашим другом и помощником"
     )
     assert test_category.name == "Телевизоры"
 
